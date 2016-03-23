@@ -1,4 +1,4 @@
-FROM base/archlinux 
+FROM base/devel
 
 MAINTAINER blackraider <er.blacky@gmail.com>
 
