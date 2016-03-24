@@ -1,4 +1,4 @@
-FROM base/devel
+FROM base/archlinux 
 
 MAINTAINER blackraider <er.blacky@gmail.com>
 
@@ -19,7 +19,7 @@ RUN pacman-db-upgrade
 
 RUN pacman -S --needed --noconfirm base-devel
 
-RUN pacman -S --noconfirm hub subversion cvs git rsync strace vim vim-runtime vim-rails vim-colorsamplerpack vim-fugitive zsh zsh-completions zsh-lovers zshdb zsh-doc openssh
+RUN pacman -S --noconfirm hub subversion cvs git rsync strace vim vim-runtime vim-rails vim-colorsamplerpack vim-fugitive zsh zsh-completions zsh-lovers zshdb zsh-doc openssh screen mutt
 
 RUN useradd -m -s /bin/zsh -U developer -G users,wheel 
 
@@ -38,7 +38,6 @@ RUN echo "%wheel    ALL=(ALL)  ALL" >> /etc/sudoers
 RUN systemctl enable sshd.service
 
 ADD .zshrc /home/developer
-
 RUN chown developer:users /home/developer/.zshrc
 
 USER developer
@@ -46,6 +45,11 @@ USER developer
 RUN cd /home/developer
 
 WORKDIR /home/developer
+
+ADD .bashrc /home/developer
+ADD .bash_profile /home/developer
+ADD .muttrc /home/developer
+ADD .screenrc /home/developer
 
 RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
