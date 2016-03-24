@@ -1,4 +1,4 @@
-FROM base/archlinux 
+FROM base/devel
 
 MAINTAINER blackraider <er.blacky@gmail.com>
 
@@ -10,6 +10,8 @@ ADD locale.conf /etc
 
 RUN locale-gen
 
+ADD mirrorlist /etc/pacman.d
+
 RUN pacman-key --refresh-keys
 
 RUN pacman -Syu --noconfirm
@@ -17,7 +19,7 @@ RUN pacman-db-upgrade
 
 RUN pacman -S --needed --noconfirm base-devel
 
-RUN pacman -S --noconfirm git rsync strace vim vim-runtime vim-rails vim-colorsamplerpack vim-fugitive zsh zsh-completions zsh-lovers zshdb zsh-doc openssh
+RUN pacman -S --noconfirm hub subversion cvs git rsync strace vim vim-runtime vim-rails vim-colorsamplerpack vim-fugitive zsh zsh-completions zsh-lovers zshdb zsh-doc openssh
 
 RUN useradd -m -s /bin/zsh -U developer -G users,wheel 
 
