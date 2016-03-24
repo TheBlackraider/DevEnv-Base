@@ -1,0 +1,36 @@
+
+autodetach		on
+crlf			off
+deflogin		off
+defsilence		off
+hardcopy_append	on
+nethack			off
+startup_message	off
+vbell			off
+defutf8			on
+defscrollback		65000
+msgminwait		2
+silencewait		15
+
+shell			-$SHELL
+shelltitle		"Shell"
+
+hardstatus alwayslastline "%{b}[\%{B}%H %{b}][%{w}%?%-Lw%?%{b}(%{W}%n*%f%t%?\(%u)%?%{b})%{w}%?%+Lw%?%?\%= %{b}][%{B} %d/%m %{W}%C%a %{b}]"
+
+sorendition	Wk
+
+activity	"%C -> %n%f %t Actividad!"
+
+bell		"%C -> %n%f %t Bell!~"
+pow_detach_msg	"Sesion Cerrada. Bye!!"
+vbell_msg		" *beep* "
+
+
+bind .
+bind ^\
+bind \\
+bind m screen -t Mutt		mutt
+bind R screen -t Root		su
+bind w screen -t Links          links
+
+msgwait 2
