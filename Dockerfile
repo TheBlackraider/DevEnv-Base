@@ -50,6 +50,7 @@ ADD .bashrc /home/developer
 ADD .bash_profile /home/developer
 ADD .muttrc /home/developer
 ADD .screenrc /home/developer
+ADD .vimrc /home/developer
 
 RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
