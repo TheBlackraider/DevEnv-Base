@@ -12,17 +12,20 @@ RUN locale-gen
 
 ADD mirrorlist /etc/pacman.d
 
+RUN pacman -Sy --noconfirm
+
+RUN pacman -S archlinux-keyring --noconfirm
 RUN pacman-key --refresh-keys
 
 RUN pacman -Syu --noconfirm
+
 RUN pacman-db-upgrade
 
 RUN pacman -S --needed --noconfirm base-devel
 
-RUN pacman -S --noconfirm hub subversion cvs git rsync strace vim vim-runtime vim-rails vim-colorsamplerpack vim-fugitive zsh zsh-completions zsh-lovers zshdb zsh-doc openssh screen mutt
+RUN pacman -S --noconfirm ca-certificates-mozilla hub subversion cvs git rsync strace vim vim-runtime vim-rails vim-colorsamplerpack vim-fugitive zsh zsh-completions zsh-lovers zshdb zsh-doc openssh screen mutt
 
 RUN useradd -m -s /bin/zsh -U developer -G users,wheel 
-
 
 USER root
 
