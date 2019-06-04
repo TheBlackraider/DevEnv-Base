@@ -80,3 +80,5 @@ WORKDIR /home/developer
 RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 ADD --chown=developer:developer .zshrc /home/developer
 
+#RUN mv .zshrc .zshrc.generated
+#RUN mv .zshrc.pre-oh-my-zsh .zshrc
