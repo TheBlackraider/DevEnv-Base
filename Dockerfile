@@ -80,3 +80,14 @@ WORKDIR /home/developer
 RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 ADD --chown=developer:developer .zshrc /home/developer
 
+# Powerline Fonts
+
+WORKDIR /home/developer
+RUN git clone https://github.com/powerline/fonts.git
+
+WORKDIR /home/developer/fonts
+RUN ./install.sh
+
+WORKDIR /home/developer
+RUN rm -Rf ./fonts
+
