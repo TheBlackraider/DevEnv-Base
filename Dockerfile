@@ -23,7 +23,7 @@ RUN pacman-db-upgrade
 
 RUN pacman -S --needed --noconfirm base-devel
 
-RUN pacman -S --noconfirm ca-certificates-mozilla hub subversion cvs git rsync strace vim vim-runtime zsh zsh-completions zsh-lovers zshdb zsh-doc openssh screen mutt
+RUN pacman -S --noconfirm ca-certificates-mozilla hub subversion cvs git rsync strace vim vim-runtime zsh zsh-completions zsh-lovers zshdb zsh-doc openssh screen mutt powerline-fonts awesome-terminal-fonts
 
 RUN useradd -m -s /bin/zsh -U developer -G users,wheel 
 
@@ -79,15 +79,4 @@ WORKDIR /home/developer
 
 RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 ADD --chown=developer:developer .zshrc /home/developer
-
-# Powerline Fonts
-
-WORKDIR /home/developer
-RUN git clone https://github.com/powerline/fonts.git
-
-WORKDIR /home/developer/fonts
-RUN ./install.sh
-
-WORKDIR /home/developer
-RUN rm -Rf ./fonts
 
